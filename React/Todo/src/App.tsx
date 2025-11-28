@@ -1,0 +1,15 @@
+import { Todo } from "./Page/Todo"
+import './App.css'
+
+function App() {
+
+  return (
+    <>
+      <div className="App">
+      <Todo/>
+    </div>
+    </>
+  )
+}
+
+export { App }
