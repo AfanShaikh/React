@@ -12,6 +12,6 @@ export const PropsValidations = ({ length, label }) =>{
     );
 };
 
-PropsValidations.prototypes = {
-    length: Proptypes.oneOf([1,3]).isRequired,
+PropsValidations.propTypes = {
+    length:Proptypes.oneOf([1,3]),
 };
