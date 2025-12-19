@@ -22,6 +22,14 @@ export const TodoList = ({ value }) =>{
     const handleClickCancel = (id) =>{
         dispatch({ type: type.EDITS_TODO_ITEMS, payload: id});
     };
+    const handleComplete = (id) => {
+    dispatch({ type: type.COMPLETE_TODO_ITEMS, payload: id });
+    };
+
+
+
+
+
     return(
         <>
         {state.items && state.items.map((el) =>{
@@ -35,8 +43,22 @@ export const TodoList = ({ value }) =>{
                     listStyle: 'none'
                  }} 
                 >
-                    <input type="checkbox"/>
-                    <li>{el.id}</li>
+                    <input
+                        type="checkbox"
+                        checked={el.isComplete}
+                        onChange={() => handleComplete(el.id)}
+                    />
+                    {/* <li>{el.id}</li> */}
+                    <li
+                    style={{
+                        textDecoration: el.isComplete ? 'line-through' : 'none',
+                        color: el.isComplete ? 'gray' : 'black',
+                    }}
+                    >
+                    {el.text}
+                    </li>
+
+
                     {el.isEdits ? (
                      <input ref={editValue} defaultValue={el.text} type="text"/>   
                     ) :(

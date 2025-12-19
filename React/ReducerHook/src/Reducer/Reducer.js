@@ -1,4 +1,4 @@
-import { ADD_TODO_ITEMS, EDITS_TODO_ITEMS, DELETE_TODO_ITEMS } from './Action';
+import { ADD_TODO_ITEMS, EDITS_TODO_ITEMS, DELETE_TODO_ITEMS,  COMPLETE_TODO_ITEMS } from './Action';
 import { initialValue } from './Store';
 
 export const reducer = ( state = initialValue, action) =>{
@@ -12,7 +12,7 @@ export const reducer = ( state = initialValue, action) =>{
                     id: Date.now(),
                     text: action.payload,
                     isEdits: false,
-                    inComplete: false,
+                    isComplete: false,
                 },
                ],
             };
@@ -45,6 +45,18 @@ export const reducer = ( state = initialValue, action) =>{
                 ...state,
                 items: state.items.filter((el) => el.id != action.payload),
             };
+
+
+            case COMPLETE_TODO_ITEMS:
+                return {
+                    ...state,
+                    items: state.items.map((el) =>
+                    el.id === action.payload
+                        ? { ...el, isComplete: !el.isComplete }
+                        : el
+                    ),
+                };
+
 
             default:
                 return state;
