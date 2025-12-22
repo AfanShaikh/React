@@ -22,6 +22,7 @@ export const TodoList = ({ value }) =>{
     const handleClickCancel = (id) =>{
         dispatch({ type: type.EDITS_TODO_ITEMS, payload: id});
     };
+    
     const handleComplete = (id) => {
     dispatch({ type: type.COMPLETE_TODO_ITEMS, payload: id });
     };
