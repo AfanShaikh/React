@@ -56,7 +56,7 @@ export const TodoList = ({ value }) =>{
                         color: el.isComplete ? 'gray' : 'black',
                     }}
                     >
-                    {el.text}
+                    {el.id}
                     </li>
 
 
