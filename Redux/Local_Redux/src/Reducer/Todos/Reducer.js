@@ -10,10 +10,11 @@ export const todoReducer = (state = initialValue,{ type, payload }) =>{
                 return state;
             } else {
                 const todoValue = {
-                    id:Date.now(),
-                    text:payload,
-                    isEdit:false,
-                    isComplete:false
+                    id: Date.now(),
+                    text: payload,
+                    editText: payload,
+                    isEdit: false,
+                    isComplete: false
                 };
                 return {
                     ...state,
@@ -33,9 +34,49 @@ export const todoReducer = (state = initialValue,{ type, payload }) =>{
         case types.EDITTODOS: {
             return {
                 ...state,
-                todo: state.todo.map((el) => el.id === payload ? { ...el, isEdit:true }: el),
+                todo: state.todo.map((el) =>
+                el.id === payload
+                    ? { ...el, isEdit: true }
+                    : el
+                ),
             };
         }
+
+        
+        case types.CONFIRMTODO: {
+            return {
+                ...state,
+                todo: state.todo.map((el) =>
+                el.id === payload
+                    ? { ...el, text: el.editText, isEdit: false }
+                    : el
+                ),
+            };
+            }
+
+        case types.UPDATETEXT: {
+        return {
+            ...state,
+            todo: state.todo.map((el) =>
+            el.id === payload.id
+                ? { ...el, editText: payload.text }
+                : el
+            ),
+        };
+        }
+
+        case types.CANCELTODO: {
+            return {
+                ...state,
+                todo: state.todo.map((el) =>
+                el.id === payload
+                    ? { ...el, editText: el.text, isEdit: false }
+                    : el
+                ),
+            };
+        }
+
+
 
         default:
             return state;

@@ -22,10 +22,26 @@ export const TodoList = () => {
     }
 
 
+
+        const handleConfirm = (id) => {
+        dispatch({
+            type: types.CONFIRMTODO,
+            payload: id,
+        });
+        };
+
+        const handleCancel = (id) => {
+        dispatch({
+            type: types.CANCELTODO,
+            payload: id,
+        });
+    };
+
+
     return(
         <>
-        {value && value.map((el) =>{
-            return(
+            {value && value.map((el) => {
+            return (
                 <div
                 key={el.id}
                 style={{
@@ -35,14 +51,43 @@ export const TodoList = () => {
                     justifyContent: 'space-around',
                 }}
                 >
-                    <input type="checkbox" />
-                    <h3>{el.id}</h3>
-                    <p>{el.text}</p>
-                    <button onClick={() => handleEdit(el.id)}>Edit</button>
-                    <button onClick={() => handleDelete(el.id)}>Delete</button>
+
+                <input type="checkbox" />
+
+                <h3>{el.id}</h3>
+
+
+                    {el.isEdit ? (
+                    <>
+                        <input
+                        type="text"
+                        value={el.editText}
+                        onChange={(e) =>
+                            dispatch({
+                            type: types.UPDATETEXT,
+                            payload: { id: el.id, text: e.target.value },
+                            })
+                        }
+                        />
+
+                            <button onClick={() => handleConfirm(el.id, el.editText)}>
+                                Confirm
+                            </button>
+                            <button onClick={() => handleCancel(el.id)}>
+                                Cancel
+                            </button>
+                            </>
+                    ) : (
+                    <>
+                        <p>{el.text}</p>
+                        <button onClick={() => handleEdit(el.id)}>Edit</button>
+                        <button onClick={() => handleDelete(el.id)}>Delete</button>
+                    </>
+                    )}
+
                 </div>
-            )
-        })}
+            );
+            })}
         </>
     )
 };
