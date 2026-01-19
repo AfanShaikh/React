@@ -8,7 +8,7 @@ export const TodoList = () => {
     const dispatch = useDispatch();
 
     const value = useSelector((xyz) =>{
-        return xyz.todo;
+        return xyz.todos.todo;
     });
     console.log('🚀 ~ value:', value);
 

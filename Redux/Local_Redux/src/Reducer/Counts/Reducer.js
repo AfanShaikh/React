@@ -1,4 +1,4 @@
-import * as types from './Counts/Action';
+import * as types from '../Counts/Action';
 
 const initialValue = { count: 0 };
 

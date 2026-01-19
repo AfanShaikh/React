@@ -5,7 +5,7 @@ import * as types from '../Reducer/Counts/Action';
 
 export const Counter = () => {
   const dispatch = useDispatch();
-  const value = useSelector((state) => state.count);
+  const value = useSelector((state) => state.Counts.count);
 
   //   console.log('🚀 ~ value:', value);
 
