@@ -1,7 +1,7 @@
 import { LoginCompo } from '../Components/Login';
 import { useDispatch, useSelector } from "react-redux";
 
-import * as types from "../Reducer/Auth/Action";
+import { loginSuccessfull, loginFailure  } from "../Reducer/Auth/Action";
 
 
 export const Login = () => {
@@ -10,9 +10,9 @@ export const Login = () => {
 
 const handleLogin=({email,pass})=>{
     if (email === 'admin' && pass === 'admin@1234') {
-      dispatch({ type: types.LOGIN_SUCCESSFULL, payload: 'fakeToken' });
+      dispatch(loginSuccessfull('Fake-Token'));
     } else {
-      dispatch({ type: types.LOGIN_FAILURE, payload: 'wrong credantials' });
+      dispatch(loginFailure('Wrong Crendentails'));
     }
 }
 

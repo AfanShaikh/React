@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export const LoginCompo = ({ props }) => {
-  console.log("🚀 ~ props:", props);
+  // console.log("🚀 ~ props:", props);
 
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')

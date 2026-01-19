@@ -12,6 +12,12 @@ export const TodoList = () => {
     });
     console.log('🚀 ~ value:', value);
 
+
+        const { token } = useSelector((xyz) =>{
+        return xyz.auths;
+    });
+        console.log('🚀 ~ token:', token);
+
     const handleEdit = (id) =>{
         dispatch({type: types.EDITTODOS, payload: id});
     }
