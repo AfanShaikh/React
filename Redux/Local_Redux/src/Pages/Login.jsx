@@ -9,6 +9,11 @@ export const Login = () => {
   const { isLoading, isError } = useSelector((state) => state.auths)
 
 const handleLogin=({email,pass})=>{
+    // if (email === 'admin' && pass === 'admin@1234') {
+    //   dispatch(loginSuccessfull('Fake-Token'));
+    // } else {
+    //   dispatch(loginFailure('Wrong Crendentails'));
+    // }
     if (email === 'admin' && pass === 'admin@1234') {
       dispatch(loginSuccessfull('Fake-Token'));
     } else {
