@@ -1,11 +1,31 @@
-import styled from "styled-components";
-import { FilterMusicRecords } from "../Components/FilterMusicRecords";
-import { MusicAlbum } from "../Components/MusicAlbum";
+import React from 'react';
+import styled from 'styled-components';
+import { FilterMusicRecords } from '../Components/FilterMusicRecords';
+import { MusicAlbum } from '../Components/MusicAlbum';
+import { useSelector } from 'react-redux';
 
 export const MusicRecord = () => {
+  const isErrorFound = useSelector((store) => store.isError);
+
+  if (isErrorFound.msg) {
+    return (
+      <div>
+        <h1>{isErrorFound.remark.name} ❌</h1>
+        <h1>{isErrorFound.remark.message} ❌</h1>
+
+        <h1>
+          please start the server using{' '}
+          <mark>
+            <code>npm run serever</code>
+          </mark>
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <Wrapper>
-      <WrapperFilterMusicRecords>
+      <WrapperFilterMusicRecords color="green">
         <FilterMusicRecords />
       </WrapperFilterMusicRecords>
 
@@ -17,21 +37,23 @@ export const MusicRecord = () => {
 };
 
 const Wrapper = styled.div`
-    border: 1px solid red;
-    display: flex;
-    justify-content: center;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
 `;
 
 const WrapperFilterMusicRecords = styled.div`
-    border: 1px solid green;
-    width: 30%;
-    height: 100%;
+  border: ${(value) => `1px solid ${value.color}`};
+  width: 30%;
+  height: 100%;
 `;
 
 const WrapperMusicAlbumRecords = styled.div`
-    border: 1px dashed pink;
-    width: 70%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
-`
+  border: 1px dashed pink;
+  width: 70%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+`;
+
+// https://upload.wikimedia.org/wikipedia/en/f/f0/My_Beautiful_Dark_Twisted_Fantasy.jpg

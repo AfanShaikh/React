@@ -4,7 +4,7 @@ import * as types from "./Action"
 const initialVal = {
     musicRecords: [],
     isLoading: false,
-    isError: null
+    isError: false,
 }
 
 export const reducer = (oldstate = initialVal, {type,payload}) => {
@@ -30,6 +30,6 @@ export const reducer = (oldstate = initialVal, {type,payload}) => {
             }
 
         default:
-            return oldstate
-    }
-}
+            return oldstate;
+    };
+};
