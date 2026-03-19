@@ -1,12 +1,13 @@
-import './App.css'
+import { Navbar } from './Components/Navbar';
+import { MainRoutes } from './Pages/mainRoutes';
 
-import { MainRoutes } from './Pages/MainRoutes'
-
-export const App = () => {
-
+const App = () => {
   return (
     <>
+      <Navbar />
       <MainRoutes />
     </>
-  )
-}
+  );
+};
+
+export { App };

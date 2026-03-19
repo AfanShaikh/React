@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const SingleMusicRecords = () => {
+export const SingleMusicRecords = () => {
   return (
     <div>
-      
-    </div>
-  )
-}
 
-export default SingleMusicRecords
+    </div>
+  );
+};

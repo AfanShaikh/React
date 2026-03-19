@@ -1,17 +1,27 @@
-import { Route, Routes } from "react-router-dom"
-
-
-import { MusicRecord } from "./MusicRecord"
-import {Login  } from "../Pages/Login";
-import { EditMusicRecords } from "./EditsMusicRecord"
+import { Routes, Route } from "react-router-dom";
+import { MusicRecord } from "./MusicRecord";
+import { Login } from "./Login";
+import { EditsMusicRecord } from "./EditsMusicRecord";
+import { ReqAuth } from "../Components/ReqAuth";
+import { SingleMusicRecords } from "./SingleMusicRecords";
 
 export const MainRoutes = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<MusicRecord />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/edit_music" element={<EditMusicRecords />}></Route>
-            <Route path="*" element={<h1>Page not found...</h1>}></Route>
-        </Routes>
-    )
-}
+  return (
+    <Routes>
+      <Route path="/" element={<MusicRecord />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/music/:id" element={<SingleMusicRecords />} />
+
+      <Route
+        path="/music/:id/edit_music"
+        element={
+          <ReqAuth>
+            <EditsMusicRecord />
+          </ReqAuth>
+        }
+      />
+
+      <Route path="*" element={<h1>Page not found...</h1>} />
+    </Routes>
+  );
+};

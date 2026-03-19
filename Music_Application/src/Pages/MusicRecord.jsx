@@ -1,22 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FilterMusicRecords } from '../Components/FilterMusicRecords';
-import { MusicAlbum } from '../Components/MusicAlbum';
-import { useSelector } from 'react-redux';
+import React from "react";
+import styled from "styled-components";
+import { FilterMusicRecords } from "../Components/FilterMusicRecords";
+import { MusicAlbum } from "../Components/musicAlbum";
+import { useSelector } from "react-redux";
 
 export const MusicRecord = () => {
-  const isErrorFound = useSelector((store) => store.isError);
+  const isErrorFound = useSelector((store) => store.app.isError);
 
   if (isErrorFound.msg) {
     return (
       <div>
-        <h1>{isErrorFound.remark.name} ❌</h1>
-        <h1>{isErrorFound.remark.message} ❌</h1>
+        <h1>{isErrorFound.remark.name}</h1>
+        <h1>{isErrorFound.remark.message}</h1>
 
         <h1>
-          please start the server using{' '}
+          please start the server using
           <mark>
-            <code>npm run serever</code>
+            <code>npm run server</code>
           </mark>
         </h1>
       </div>
@@ -55,5 +55,3 @@ const WrapperMusicAlbumRecords = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `;
-
-// https://upload.wikimedia.org/wikipedia/en/f/f0/My_Beautiful_Dark_Twisted_Fantasy.jpg
